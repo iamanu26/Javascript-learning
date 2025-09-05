@@ -32,7 +32,3 @@ Big thanks to him for providing such **high-quality free content**. 🙌
 
 ---
 
-## 🛠️ How to Run
-1. Clone the repository  
-   ```bash
-   git clone https://github.com/your-username/js-hindi-youtube.git
