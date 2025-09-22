@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    
+            // // =========>METHOD 1
+            // // donot inject onclick in html code because when we scale our project , it may cause breaking of code
+            // /*
+            // //==========> METHOD 2
+            // // WE ALSO AVOIDE TO USE THIS METHOD AS IT US VERY LESS FEATURES ,
+            // //  IN THIS MODERN TIME IT IS USELESS. YA IT WILL WORK BUT IT WILL LIMIT THE FEATUERS
+            // document.getElementById('owl').onclick = function(){
+            //     alert('owl clicked');
+            // }
+            // */
+
+            // /*
+            // =========> KNOW MORE ABOUT
+            // type , timestamp , defaultPrevent , target , toElement , srcElement , currentTarget , clintX ,
+            // clintY ,  screenX , screenY
+            // altKey , ctrlKey , shiftKey , keyCode
+            // */
+
+            // // ==========> METHOD 4 BEST WAY
+
+            // /*
+            //     NOTE : 
+            //     =====================>(DEFULT CASE i.e. false and generaly known as bubbling )
+
+            //     document.getElementById('owl').addEventListener('click' , function(e){} , false)
+
+            //     in this eventpropogation we using the bubbling concept in which js track the 
+            //     attribute from current to upper position 
+            //     IN this given specific code first owl statement will print and then the ul atribute comment text 
+            //     will print.
+            //     =====================>(MODIFIED CASE i.e. true and generaly known as capturing mode)
+                
+            //     document.getElementById('owl').addEventListener('click' , function(e){} , true)
+
+            //     in this event propogation we are using the capturing the attribute from higher order to the 
+            //     lower order that means it will print according to order.
+            //     */
+
+            // document.getElementById('images').addEventListener('click' , function(e){
+            //     console.log(e)
+
+            //     // to see what this event do , open it in browser and inspect it to see
+            //     console.log("clicked inside the ul tage having the id image");
+                
+            // } , false)
+            // document.getElementById('owl').addEventListener('click' , function(e){
+            //     //alert("Owl clicked again")
+
+            //     // to see what this event do , open it in browser and inspect it to see
+            //     console.log("owl clicked");
+            //     e.stopPropagation(); // It will stop the bubble that means it will execute the current layer and no able to travel the higher layer 
+
+            // } , false)
+            // // this false is representing the attributre EVENT_PROPOGATION in general context it always false3 
+
+
+        
+            // // ==========> METHOD 5 [ attachEvent(); it use in early time i.e in the time of internet explorer]
+
+            // document.getElementById('google').addEventListener('click' , function(e){
+            //     e.preventDefault();
+            //     console.log("google clicked");
+                
+            // } , false)
+
+    document.querySelector('#images').addEventListener('click' , function(e){
+        console.log(e.target.tagName);
+        
+        if(e.target.tagName === 'IMG')
+        {
+            let removeIt = e.target.parentNode;
+            removeIt.remove();
+        }
+
+        
+
+
+        //removeIt.parentNode.removeChild(removeIt);
+        //removeIt = e.target.parentNode  -> its give us the parent of img i.e li tag/ attribute 
+        // removeIt.parentNode.removeChild(removeIt); -> removeIt ka parent -> ul -> then we are removing the child node of the ul tag that is li tag
+        
+    } , false)
+    
+
+</script>
+</html>
